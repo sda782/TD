@@ -11,7 +11,7 @@
 
 ##  TODO - OverView
 -   Moodboard
--   Kocept Art
+-   Concept Art
 -   Grid Spawing
 -   Path generation
 -   Building placing
