@@ -14,6 +14,7 @@
 -   Concept Art
 -   Grid Spawing
 -   Path generation
+-   Camera Control
 -   Building placing
 -   Enemy spawing
 -   Tower Attack
