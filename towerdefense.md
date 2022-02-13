@@ -10,13 +10,15 @@
   - [IDEAS](#ideas)
 
 ##  TODO - OverView
--   Moodboard
++   Moodboard
 -   Concept Art
--   Grid Spawing
++   Grid Spawing
 -   Path generation
--   Camera Control
+    -   Path maker
++   Camera Control
 -   Building placing
 -   Enemy spawing
+    -   Movement
 -   Tower Attack
 -   UI
 

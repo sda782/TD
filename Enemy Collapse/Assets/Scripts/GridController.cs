@@ -20,13 +20,14 @@ public class GridController : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
     private List<GameObject> enemies;
+    private int amount = 0;
     void Start()
     {
         grid = new List<GameObject>();
         enemies = new List<GameObject>();
         SpawnGrid();
         SetPath();
-        spawnEnemies(10);
+        InvokeRepeating("spawnEnemies", 0, 1f);
     }
 
     private void SpawnGrid()
@@ -58,12 +59,11 @@ public class GridController : MonoBehaviour
         }
         textureManager.SetTexture(endObj, 5);
     }
-    private void spawnEnemies(int amount)
+    private void spawnEnemies()
     {
-        for (int i = 0; i < amount; i++)
-        {
-            GameObject e = Instantiate(enemy);
-            enemies.Add(e);
-        }
+        if (amount == 5) CancelInvoke();
+        amount++;
+        GameObject e = Instantiate(enemy);
+        enemies.Add(e);
     }
 }
