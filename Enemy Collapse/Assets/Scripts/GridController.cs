@@ -15,7 +15,6 @@ public class GridController : MonoBehaviour
     {
         grid = new List<GameObject>();
         SpawnGrid();
-        SpawnQuad();
     }
 
     private void SpawnGrid()
@@ -25,20 +24,12 @@ public class GridController : MonoBehaviour
         {
             for (int j = 0; j < y; j++)
             {
-                GameObject p = Instantiate(point);
+                GameObject p = Instantiate(platform);
                 p.transform.position = new Vector3(i, 0, j);
                 p.transform.SetParent(transform);
                 grid.Add(p);
             }
         }
         transform.position = new Vector3(0 - x / 2, 0, 0 - y / 2);
-    }
-
-    private void SpawnQuad()
-    {
-        foreach (GameObject point in grid)
-        {
-            GameObject p = Instantiate(platform, point.transform.position, platform.transform.rotation);
-        }
     }
 }
