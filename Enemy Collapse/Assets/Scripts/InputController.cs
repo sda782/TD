@@ -24,7 +24,7 @@ public class InputController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("hit");
+                Debug.Log(hit.transform.position);
                 lastSelected = selectedObj != null ? selectedObj : null;
                 selectedObj = hit.transform.gameObject;
                 ChangeSprite();

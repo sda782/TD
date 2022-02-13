@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using UnityEngine;
 
 public class GridController : MonoBehaviour
@@ -14,12 +17,16 @@ public class GridController : MonoBehaviour
     private TextureManager textureManager;
     [SerializeField]
     private LevelData levelData;
+    [SerializeField]
+    private GameObject enemy;
+    private List<GameObject> enemies;
     void Start()
     {
         grid = new List<GameObject>();
+        enemies = new List<GameObject>();
         SpawnGrid();
         SetPath();
-
+        spawnEnemies(10);
     }
 
     private void SpawnGrid()
@@ -39,11 +46,24 @@ public class GridController : MonoBehaviour
     }
     private void SetPath()
     {
+        GameObject startObj = grid.Find(g => g.transform.position == levelData.StartPoint);
+        GameObject endObj = grid.Find(g => g.transform.position == levelData.EndPoint);
+        textureManager.SetTexture(startObj, 3);
+        Vector3 currentPos = levelData.StartPoint;
         foreach (var item in levelData.Path)
         {
-            textureManager.SetTexture(grid[item], 4);
+            currentPos += new Vector3(item.x, 0, item.y);
+            GameObject p = grid.Find(g => g.transform.position == currentPos);
+            textureManager.SetTexture(p, 4);
         }
-        textureManager.SetTexture(grid[levelData.StartPoint], 3);
-        textureManager.SetTexture(grid[levelData.EndPoint], 5);
+        textureManager.SetTexture(endObj, 5);
+    }
+    private void spawnEnemies(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject e = Instantiate(enemy);
+            enemies.Add(e);
+        }
     }
 }

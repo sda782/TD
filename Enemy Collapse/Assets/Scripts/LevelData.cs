@@ -10,8 +10,10 @@ public class LevelData : ScriptableObject
     public string Name { get; set; }
     [field: SerializeField]
     public Vector2 WorldSize { get; set; }
-    public int StartPoint { get => Path.FirstOrDefault(); }
-    public int EndPoint { get => Path.LastOrDefault(); }
     [field: SerializeField]
-    public List<int> Path { get; set; }
+    public Vector3 StartPoint { get; set; }
+    [field: SerializeField]
+    public Vector3 EndPoint { get; set; }
+    [field: SerializeField]
+    public List<Vector2> Path { get; set; }
 }
