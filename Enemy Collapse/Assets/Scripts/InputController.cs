@@ -10,7 +10,8 @@ public class InputController : MonoBehaviour
     private GameObject selectedObj = null;
     private GameObject lastSelected = null;
     [SerializeField]
-    private Sprite[] sprites;
+    private GridController gridController;
+
     void Awake()
     {
         cam = Camera.main;
@@ -34,9 +35,10 @@ public class InputController : MonoBehaviour
     private void ChangeSprite()
     {
         Renderer srend = selectedObj.GetComponent<Renderer>();
-        srend.material.mainTexture = sprites[1].texture;
+        srend.material.mainTexture = gridController.Textures[2];
+
         if (lastSelected == null) return;
         Renderer lrend = lastSelected.GetComponent<Renderer>();
-        lrend.material.mainTexture = sprites[0].texture;
+        lrend.material.mainTexture = gridController.Textures[1];
     }
 }

@@ -5,24 +5,29 @@ using UnityEngine;
 
 public class GridController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject point;
+
+    public Texture[] Textures;
     [SerializeField]
     private GameObject platform;
     private List<GameObject> grid;
-    private int x = 20, y = 20;
+    [SerializeField]
+    private TextureManager textureManager;
+    [SerializeField]
+    private LevelData levelData;
     void Start()
     {
         grid = new List<GameObject>();
         SpawnGrid();
+        SetPath();
+
     }
 
     private void SpawnGrid()
     {
 
-        for (int i = 0; i < x; i++)
+        for (int i = 0; i < levelData.WorldSize.y; i++)
         {
-            for (int j = 0; j < y; j++)
+            for (int j = 0; j < levelData.WorldSize.x; j++)
             {
                 GameObject p = Instantiate(platform);
                 p.transform.position = new Vector3(i, 0, j);
@@ -30,6 +35,15 @@ public class GridController : MonoBehaviour
                 grid.Add(p);
             }
         }
-        transform.position = new Vector3(0 - x / 2, 0, 0 - y / 2);
+        transform.position = new Vector3(0 - levelData.WorldSize.x / 2, 0, 0 - levelData.WorldSize.y / 2);
+    }
+    private void SetPath()
+    {
+        foreach (var item in levelData.Path)
+        {
+            textureManager.SetTexture(grid[item], 4);
+        }
+        textureManager.SetTexture(grid[levelData.StartPoint], 3);
+        textureManager.SetTexture(grid[levelData.EndPoint], 5);
     }
 }

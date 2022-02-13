@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806251766}
   - component: {fileID: 806251767}
+  - component: {fileID: 806251768}
   m_Layer: 0
   m_Name: GridController
   m_TagString: Untagged
@@ -259,8 +260,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f94a1c3924cfee4e8f36ae20b1f758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Textures:
+  - {fileID: 2800000, guid: d97e906af03f3384890e3b0830a013f1, type: 3}
+  - {fileID: 2800000, guid: 9db28a5293d70614888c8844c5f2d878, type: 3}
+  - {fileID: 2800000, guid: 028095ef326cfeb4281687424a495eea, type: 3}
+  - {fileID: 2800000, guid: 92775a9e22d1a184ab88c0524b182376, type: 3}
+  - {fileID: 2800000, guid: f62132ee38f0da24bb6b2cf779e02578, type: 3}
+  - {fileID: 2800000, guid: d225e62529894784c984aa26651a6e7d, type: 3}
   point: {fileID: 6609532039182715538, guid: afd2eefc84133ae408de5f72fba9c65b, type: 3}
   platform: {fileID: 1245734455497483395, guid: f68223065cb272e46a262357517c2be1, type: 3}
+  textureManager: {fileID: 806251768}
+  levelData: {fileID: 11400000, guid: 03f9be1c3ccfc6c4984bd904c083dbbf, type: 2}
+--- !u!114 &806251768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806251765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4994743f61d521c4a8ada919bfde734b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridController: {fileID: 806251767}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +398,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a867dc2fbb5ef46bf20f4bfcc5ba06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 9db28a5293d70614888c8844c5f2d878, type: 3}
-  - {fileID: 21300000, guid: 028095ef326cfeb4281687424a495eea, type: 3}
+  gridController: {fileID: 806251767}
