@@ -49,7 +49,6 @@ public class GridController : MonoBehaviour
     {
         GameObject startObj = grid.Find(g => g.transform.position == levelData.StartPoint);
         GameObject endObj = grid.Find(g => g.transform.position == levelData.EndPoint);
-        textureManager.SetTexture(startObj, 3);
         Vector3 currentPos = levelData.StartPoint;
         foreach (var item in levelData.Path)
         {
@@ -57,11 +56,12 @@ public class GridController : MonoBehaviour
             GameObject p = grid.Find(g => g.transform.position == currentPos);
             textureManager.SetTexture(p, 4);
         }
+        textureManager.SetTexture(startObj, 3);
         textureManager.SetTexture(endObj, 5);
     }
     private void spawnEnemies()
     {
-        if (amount == 5) CancelInvoke();
+        if (amount == 0) CancelInvoke();
         amount++;
         GameObject e = Instantiate(enemy);
         enemies.Add(e);
