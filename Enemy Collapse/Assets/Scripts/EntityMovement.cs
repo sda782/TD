@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,32 +8,30 @@ public class EntityMovement : MonoBehaviour
     [SerializeField]
     private LevelData levelData;
     private int step = 0;
-    private float timeRemaining;
     [SerializeField]
-    private float moveSpeed = 1;
+    private float moveSpeed;
+    private Vector3 from;
 
     void Start()
     {
         transform.position = new Vector3(levelData.StartPoint.x, transform.position.y, levelData.StartPoint.z);
-        timeRemaining = moveSpeed;
+        from = levelData.StartPoint;
     }
 
     void Update()
     {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-            return;
-        }
-        timeRemaining = moveSpeed;
         if (step == levelData.Path.Count)
         {
             step = 0;
             transform.position = new Vector3(levelData.StartPoint.x, transform.position.y, levelData.StartPoint.z);
+            from = levelData.StartPoint;
         }
-        transform.position += ConvertV(levelData.Path[step]);
-        step++;
-
+        transform.position = Vector3.MoveTowards(transform.position, from + ConvertV(levelData.Path[step]), Time.deltaTime * moveSpeed);
+        if (transform.position == from + ConvertV(levelData.Path[step]))
+        {
+            from += ConvertV(levelData.Path[step]);
+            step++;
+        }
     }
 
     private Vector3 ConvertV(Vector2 dir)
