@@ -35,6 +35,17 @@ public class GridController : MonoBehaviour
         }
         transform.position = new Vector3(0 - Level.levelData.WorldSize.x / 2, 0, 0 - Level.levelData.WorldSize.y / 2);
     }
+
+    private void SetEdges()
+    {
+        for (int i = 0; i < Level.levelData.WorldSize.y; i++)
+        {
+            for (int j = 0; j < Level.levelData.WorldSize.x; j++)
+            {
+
+            }
+        }
+    }
     private void SetPath()
     {
         GameObject startObj = grid.Find(g => g.transform.position == Level.levelData.StartPoint);
