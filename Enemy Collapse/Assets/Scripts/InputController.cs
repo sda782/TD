@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,8 +9,6 @@ using UnityEngine.Events;
 public class InputController : MonoBehaviour
 {
     private Camera cam;
-    private GameObject selectedObj = null;
-    private GameObject lastSelected = null;
     [SerializeField]
     private GridController gridController;
     [SerializeField]
@@ -27,10 +26,14 @@ public class InputController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.transform.position);
-                lastSelected = selectedObj != null ? selectedObj : null;
-                selectedObj = hit.transform.gameObject;
-                ChangeSprite();
+                switch (hit.transform.tag)
+                {
+                    case "Enemy":
+                        handleEnemy(hit);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -39,13 +42,8 @@ public class InputController : MonoBehaviour
         }
     }
 
-    private void ChangeSprite()
+    private void handleEnemy(RaycastHit hit)
     {
-        Renderer srend = selectedObj.GetComponent<Renderer>();
-        srend.material.mainTexture = gridController.Textures[2];
-
-        if (lastSelected == null) return;
-        Renderer lrend = lastSelected.GetComponent<Renderer>();
-        lrend.material.mainTexture = gridController.Textures[1];
+        throw new NotImplementedException();
     }
 }
