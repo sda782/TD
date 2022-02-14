@@ -20,17 +20,16 @@ public class EntityMovement : MonoBehaviour
 
     void Update()
     {
-        if (step == levelData.Path.Count)
-        {
-            step = 0;
-            transform.position = new Vector3(levelData.StartPoint.x, transform.position.y, levelData.StartPoint.z);
-            from = levelData.StartPoint;
-        }
+
         transform.position = Vector3.MoveTowards(transform.position, from + ConvertV(levelData.Path[step]), Time.deltaTime * moveSpeed);
         if (transform.position == from + ConvertV(levelData.Path[step]))
         {
             from += ConvertV(levelData.Path[step]);
             step++;
+        }
+        if (step == levelData.Path.Count)
+        {
+            Destroy(gameObject);
         }
     }
 

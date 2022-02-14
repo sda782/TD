@@ -16,7 +16,7 @@ public class GridController : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
     private List<GameObject> enemies;
-    private int amount = 0;
+    private int amount;
     private int numberofenemies = 10;
     void Start()
     {
@@ -24,7 +24,6 @@ public class GridController : MonoBehaviour
         enemies = new List<GameObject>();
         SpawnGrid();
         SetPath();
-        InvokeRepeating("spawnEnemies", 0.1f, 0.2f);
     }
 
     private void SpawnGrid()
@@ -84,12 +83,18 @@ public class GridController : MonoBehaviour
         return g;
     }
 
+    public void SpawnEnemies()
+    {
+        amount = 0;
+        InvokeRepeating("spawnEnemies", 0.1f, 0.2f);
+    }
+
     private void spawnEnemies()
     {
         if (amount == numberofenemies - 1) CancelInvoke();
         amount++;
         GameObject e = Instantiate(enemy);
         e.transform.SetParent(GameObject.Find("EnemyManager").transform);
-        enemies.Add(e);
+        //enemies.Add(e);
     }
 }

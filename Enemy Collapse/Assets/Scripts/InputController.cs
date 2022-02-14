@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class InputController : MonoBehaviour
     private GameObject lastSelected = null;
     [SerializeField]
     private GridController gridController;
+    [SerializeField]
+    public UnityEvent StartGame;
 
     void Awake()
     {
@@ -29,6 +32,10 @@ public class InputController : MonoBehaviour
                 selectedObj = hit.transform.gameObject;
                 ChangeSprite();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartGame?.Invoke();
         }
     }
 
