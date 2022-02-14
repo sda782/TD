@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae9555639b8d92345bd082ec70db048f, type: 3}
-  m_Name: Testing
+  m_Name: BigMap
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Testing
-  <WorldSize>k__BackingField: {x: 20, y: 20}
-  <StartPoint>k__BackingField: {x: -8, y: 0, z: -8}
+  <Name>k__BackingField: BigMap
+  <WorldSize>k__BackingField: {x: 100, y: 100}
+  <StartPoint>k__BackingField: {x: -48, y: 0, z: -48}
   <Path>k__BackingField:
-  - {x: 8, y: 0}
-  - {x: 0, y: 8}
-  - {x: -4, y: 0}
-  - {x: 0, y: 6}
-  - {x: 10, y: 0}
-  - {x: 0, y: -13}
+  - {x: 95, y: 0}
+  - {x: 0, y: 95}
+  - {x: -40, y: 0}
+  - {x: 0, y: -30}
+  - {x: 5, y: 0}
+  - {x: 0, y: -10}
+  - {x: -30, y: 0}

@@ -31,7 +31,7 @@ public class TextureManager : MonoBehaviour
                 break;
         }
         if (g == null) return null;
-        SetTexture(g, 4);
+        SetTexture(g, 1);
         return g;
     }
 }
