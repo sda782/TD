@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
 using UnityEngine;
 
 public class GridController : MonoBehaviour
@@ -50,15 +46,43 @@ public class GridController : MonoBehaviour
         GameObject startObj = grid.Find(g => g.transform.position == levelData.StartPoint);
         GameObject endObj = grid.Find(g => g.transform.position == levelData.EndPoint);
         Vector3 currentPos = levelData.StartPoint;
-        foreach (var item in levelData.Path)
+        foreach (var dir in levelData.Path)
         {
-            currentPos += new Vector3(item.x, 0, item.y);
             GameObject p = grid.Find(g => g.transform.position == currentPos);
-            textureManager.SetTexture(p, 4);
+            for (int i = 0; i < dir.magnitude; i++)
+            {
+                p = SetPathTexture(p, dir);
+            }
+            currentPos += new Vector3(dir.x, 0, dir.y);
         }
         textureManager.SetTexture(startObj, 3);
         textureManager.SetTexture(endObj, 5);
     }
+
+    private GameObject SetPathTexture(GameObject obj, Vector2 dir)
+    {
+        int index = grid.FindIndex(g => g == obj);
+        GameObject g = null;
+        switch (dir.normalized)
+        {
+            case Vector2 v when v.Equals(Vector2.right):
+                g = grid[index + (int)levelData.WorldSize.x];
+                break;
+            case Vector2 v when v.Equals(Vector2.up):
+                g = grid[++index];
+                break;
+            case Vector2 v when v.Equals(Vector2.left):
+                g = grid[index - (int)levelData.WorldSize.x];
+                break;
+            case Vector2 v when v.Equals(Vector2.down):
+                g = grid[--index];
+                break;
+        }
+        if (g == null) return null;
+        textureManager.SetTexture(g, 4);
+        return g;
+    }
+
     private void spawnEnemies()
     {
         if (amount == 0) CancelInvoke();

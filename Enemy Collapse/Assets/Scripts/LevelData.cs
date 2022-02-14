@@ -25,7 +25,6 @@ public class LevelData : ScriptableObject
         {
             sumVector += dir;
         }
-        Debug.Log(StartPoint + new Vector3(sumVector.x, 0, sumVector.y));
         return StartPoint + new Vector3(sumVector.x, 0, sumVector.y);
     }
 
