@@ -36,7 +36,7 @@ public class InputController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             StartGame?.Invoke();
         }
