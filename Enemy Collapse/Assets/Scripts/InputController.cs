@@ -44,6 +44,6 @@ public class InputController : MonoBehaviour
 
     private void handleEnemy(RaycastHit hit)
     {
-        throw new NotImplementedException();
+        Destroy(hit.transform.parent.gameObject);
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Road
   - Placeable
+  - Enemy
   layers:
   - Default
   - TransparentFX
