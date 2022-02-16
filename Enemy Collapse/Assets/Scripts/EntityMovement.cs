@@ -1,27 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EntityMovement : MonoBehaviour
 {
-    private int step = 0;
+    private int step;
     [SerializeField]
     private float moveSpeed;
     private Vector3 from;
+    private bool canTurn;
 
     void Start()
     {
+        step = 0;
         transform.position = new Vector3(Level.levelData.StartPoint.x, transform.position.y, Level.levelData.StartPoint.z);
         from = Level.levelData.StartPoint;
-        faceDirection(ConvertV(Level.levelData.Path[step == Level.levelData.Path.Count ? 0 : step]));
+        faceDirection(ConvertV(Level.levelData.Path[step]));
     }
 
     void Update()
     {
         Vector2 dir = Level.levelData.Path[step];
         transform.position = Vector3.MoveTowards(transform.position, from + ConvertV(dir), Time.deltaTime * moveSpeed);
-        if (transform.position == from + ConvertV(dir))
+
+        if (Vector3.Distance(transform.position, (from + ConvertV(dir))) <= 0f)
         {
             from += ConvertV(dir);
             step++;
@@ -37,9 +41,10 @@ public class EntityMovement : MonoBehaviour
     {
         return new Vector3(dir.x, 0, dir.y);
     }
-    private void faceDirection(Vector2 dir)
+    private void faceDirection(Vector3 dir)
     {
-        transform.forward = Vector3.forward;
-        transform.forward = ConvertV(dir).normalized;
+        if (dir == Vector3.zero) return;
+        Quaternion q = Quaternion.LookRotation(dir, Vector3.up);
+        transform.rotation = q;
     }
 }

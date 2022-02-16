@@ -1,28 +1,36 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class GridController : MonoBehaviour
 {
-
-    public Texture[] Textures;
+    [SerializeField]
+    private GameObject[] models;
     [SerializeField]
     private GameObject platform;
     [SerializeField]
     private GameObject edge;
     private List<GameObject> grid;
-    public List<GameObject> Grid { get => grid; set => grid = value; }
-    [SerializeField]
-    private TextureManager textureManager;
+    private List<GameObject> grid_with_path;
 
     void Start()
     {
         grid = new List<GameObject>();
-        SpawnGrid();
-        SetPath();
+        grid_with_path = new List<GameObject>();
+        spawnGrid();
+        setPathModel();
+        foreach (var item in grid_with_path)
+        {
+            Debug.Log("1 " + item.name);
+        }
+        foreach (var item in grid)
+        {
+            Debug.Log("1 " + item.name);
+        }
     }
 
-    private void SpawnGrid()
+    private void spawnGrid()
     {
 
         for (int i = 0; i < Level.levelData.WorldSize.y; i++)
@@ -46,24 +54,67 @@ public class GridController : MonoBehaviour
         transform.position = new Vector3(0 - Level.levelData.WorldSize.x / 2, 0, 0 - Level.levelData.WorldSize.y / 2);
     }
 
-    private void SetPath()
+    private void setPathModel()
     {
         GameObject startObj = grid.Find(g => g.transform.position == Level.levelData.StartPoint);
         GameObject endObj = grid.Find(g => g.transform.position == Level.levelData.EndPoint);
         Vector3 currentPos = Level.levelData.StartPoint;
+
         foreach (var dir in Level.levelData.Path)
         {
             GameObject p = grid.Find(g => g.transform.position == currentPos);
             for (int i = 0; i < dir.magnitude; i++)
             {
-                p = textureManager.SetPathTexture(p, dir);
+                p = getNextDir(p, dir, grid);
+                setModel(p, "platform");
             }
             currentPos += new Vector3(dir.x, 0, dir.y);
         }
-        textureManager.SetTexture(startObj, 3);
-        textureManager.SetTexture(endObj, 5);
+        setModel(startObj, "portal");
+        setModel(endObj, "tower");
+    }
+    private GameObject getNextDir(GameObject obj, Vector2 dir, List<GameObject> grid)
+    {
+        int index = grid.FindIndex(g => g == obj);
+        GameObject g = null;
+        switch (dir.normalized)
+        {
+            case Vector2 v when v.Equals(Vector2.right):
+                g = grid[index + (int)Level.levelData.WorldSize.x];
+                break;
+            case Vector2 v when v.Equals(Vector2.up):
+                g = grid[++index];
+                break;
+            case Vector2 v when v.Equals(Vector2.left):
+                g = grid[index - (int)Level.levelData.WorldSize.x];
+                break;
+            case Vector2 v when v.Equals(Vector2.down):
+                g = grid[--index];
+                break;
+        }
+        if (g == null) return null;
+        return g;
     }
 
+    private void setModel(GameObject p, string type)
+    {
+        GameObject toSpawn = models[0];
+        switch (type)
+        {
+            case "portal":
+                toSpawn = models[1];
+                break;
+            case "tower":
+                toSpawn = models[2];
+                break;
+        }
+        GameObject np = Instantiate(toSpawn, p.transform);
+        grid_with_path.Add(np);
+    }
 
-
+    private void clearGrid()
+    {
+        foreach (GameObject p in grid) Destroy(p);
+        grid.Clear();
+    }
 }

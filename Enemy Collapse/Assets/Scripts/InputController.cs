@@ -13,6 +13,8 @@ public class InputController : MonoBehaviour
     private GridController gridController;
     [SerializeField]
     public UnityEvent StartGame;
+    [SerializeField]
+    private GameObject weaponStart;
 
     void Awake()
     {
@@ -41,7 +43,6 @@ public class InputController : MonoBehaviour
             StartGame?.Invoke();
         }
     }
-
     private void handleEnemy(RaycastHit hit)
     {
         Destroy(hit.transform.parent.gameObject);
