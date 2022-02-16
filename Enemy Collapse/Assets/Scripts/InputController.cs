@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +16,8 @@ public class InputController : MonoBehaviour
     private GameObject menu;
     [SerializeField]
     private Level lvl;
+    [SerializeField]
+    private GameObject turrent;
     void Awake()
     {
         cam = Camera.main;
@@ -34,12 +35,15 @@ public class InputController : MonoBehaviour
                     case "Enemy":
                         handleEnemy(hit);
                         break;
+                    case "Placeable":
+                        placeObj(hit);
+                        break;
                     default:
                         break;
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             StartGame?.Invoke();
         }
@@ -53,6 +57,12 @@ public class InputController : MonoBehaviour
             Debug.Log("Fix it you noob");
         }
 
+    }
+
+    private void placeObj(RaycastHit hit)
+    {
+        Debug.Log("hit");
+        Instantiate(turrent, hit.point, turrent.transform.rotation);
     }
 
     private void hideMenu()

@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 715117328}
   m_Layer: 3
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Placeable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -837,6 +837,7 @@ MonoBehaviour:
   weaponStart: {fileID: 0}
   menu: {fileID: 61460643}
   lvl: {fileID: 1549514156}
+  turrent: {fileID: 5923190085341809300, guid: 0ced91b1d896c624eb9133d304d4133f, type: 3}
 --- !u!1 &972572758
 GameObject:
   m_ObjectHideFlags: 0
