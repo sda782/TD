@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Timeline;
 
 public class InputController : MonoBehaviour
 {
@@ -20,7 +15,8 @@ public class InputController : MonoBehaviour
     private GameObject weaponStart;
     [SerializeField]
     private GameObject menu;
-
+    [SerializeField]
+    private Level lvl;
     void Awake()
     {
         cam = Camera.main;
@@ -51,11 +47,22 @@ public class InputController : MonoBehaviour
         {
             hideMenu();
         }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            //switchLevel();
+            Debug.Log("Fix it you noob");
+        }
+
     }
 
     private void hideMenu()
     {
         menu.SetActive(!menu.activeSelf);
+    }
+
+    private void switchLevel()
+    {
+        lvl.ChangeLevel();
     }
 
     private void handleEnemy(RaycastHit hit)
