@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
     private int amount;
-    private int numberofenemies = 10;
+    private int numberofenemies = 2;
     public void SpawnEnemies()
     {
         amount = 0;
