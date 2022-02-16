@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Timeline;
 
 public class InputController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class InputController : MonoBehaviour
     public UnityEvent<GameObject> HitEnemy;
     [SerializeField]
     private GameObject weaponStart;
+    [SerializeField]
+    private GameObject menu;
 
     void Awake()
     {
@@ -44,7 +47,17 @@ public class InputController : MonoBehaviour
         {
             StartGame?.Invoke();
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            hideMenu();
+        }
     }
+
+    private void hideMenu()
+    {
+        menu.SetActive(!menu.activeSelf);
+    }
+
     private void handleEnemy(RaycastHit hit)
     {
         HitEnemy?.Invoke(hit.transform.parent.gameObject);
