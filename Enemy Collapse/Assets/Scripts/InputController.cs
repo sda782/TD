@@ -14,6 +14,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     public UnityEvent StartGame;
     [SerializeField]
+    public UnityEvent<GameObject> HitEnemy;
+    [SerializeField]
     private GameObject weaponStart;
 
     void Awake()
@@ -45,6 +47,7 @@ public class InputController : MonoBehaviour
     }
     private void handleEnemy(RaycastHit hit)
     {
-        Destroy(hit.transform.parent.gameObject);
+        HitEnemy?.Invoke(hit.transform.parent.gameObject);
+        //Destroy(hit.transform.parent.gameObject);
     }
 }

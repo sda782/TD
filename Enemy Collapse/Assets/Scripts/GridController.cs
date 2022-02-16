@@ -20,14 +20,7 @@ public class GridController : MonoBehaviour
         grid_with_path = new List<GameObject>();
         spawnGrid();
         setPathModel();
-        foreach (var item in grid_with_path)
-        {
-            Debug.Log("1 " + item.name);
-        }
-        foreach (var item in grid)
-        {
-            Debug.Log("1 " + item.name);
-        }
+        clearGrid();
     }
 
     private void spawnGrid()
@@ -45,6 +38,7 @@ public class GridController : MonoBehaviour
                 else
                 {
                     p = Instantiate(platform);
+                    p.name = "emptyPlatform";
                 }
                 p.transform.position = new Vector3(i, 0, j);
                 p.transform.SetParent(transform);
@@ -109,12 +103,12 @@ public class GridController : MonoBehaviour
                 break;
         }
         GameObject np = Instantiate(toSpawn, p.transform);
+        np.transform.SetParent(transform);
         grid_with_path.Add(np);
     }
 
     private void clearGrid()
     {
-        foreach (GameObject p in grid) Destroy(p);
-        grid.Clear();
+        foreach (GameObject p in grid) if (p.name == "emptyPlatform") Destroy(p);
     }
 }

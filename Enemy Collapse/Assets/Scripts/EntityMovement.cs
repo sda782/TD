@@ -11,8 +11,12 @@ public class EntityMovement : MonoBehaviour
     private float moveSpeed;
     private Vector3 from;
     private bool canTurn;
-
     void Start()
+    {
+        StartPos();
+    }
+
+    void StartPos()
     {
         step = 0;
         transform.position = new Vector3(Level.levelData.StartPoint.x, transform.position.y, Level.levelData.StartPoint.z);
@@ -33,7 +37,7 @@ public class EntityMovement : MonoBehaviour
         }
         if (step == Level.levelData.Path.Count)
         {
-            Destroy(gameObject);
+            StartPos();
         }
     }
 
