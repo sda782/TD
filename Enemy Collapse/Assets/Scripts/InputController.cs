@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -21,22 +22,13 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                switch (hit.transform.tag)
-                {
-                    case "Enemy":
-                        handleEnemy(hit);
-                        break;
-                    case "Placeable":
-                        placeObj(hit);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            leftClickHandler();
+
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            rightClickHandler();
+
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -51,6 +43,32 @@ public class InputController : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
 
+    }
+
+    private void rightClickHandler()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.tag == "Placeable")
+            {
+                placeObj(hit);
+            }
+        }
+    }
+
+    private void leftClickHandler()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.tag == "Enemy")
+            {
+                handleEnemy(hit);
+            }
+        }
     }
 
     private void placeObj(RaycastHit hit)
