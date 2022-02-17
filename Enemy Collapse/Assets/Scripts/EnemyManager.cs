@@ -32,6 +32,5 @@ public class EnemyManager : MonoBehaviour
     {
         enemies.Remove(enemy);
         Destroy(enemy);
-        if (enemies.Count == 0) SpawnEnemies();
     }
 }

@@ -442,21 +442,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press P to start wave
-
-    Kill All to start next wave
+  m_Text: 'Press B to start wave
 
     WASD to move
 
-    Control
-    to run + Space to jump
+    Control to run + Space to
+    jump
 
-    Left click to shoot
+    Left click enemies to shoot
 
-    Press X to toggle this info
+    Left click ground to place turret
 
-    (Yes
-    you can spawn more than one wave with P)'
+    Press
+    X to toggle this info
+
+    (Yes you can spawn more than one wave with P)'
 --- !u!222 &345047805
 CanvasRenderer:
   m_ObjectHideFlags: 0

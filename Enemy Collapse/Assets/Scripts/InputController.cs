@@ -30,7 +30,6 @@ public class InputController : MonoBehaviour
                         handleEnemy(hit);
                         break;
                     case "Placeable":
-                        Debug.Log("can place");
                         placeObj(hit);
                         break;
                     default:
