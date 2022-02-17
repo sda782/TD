@@ -28,14 +28,16 @@ public class CreateMap : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Vector3 gridPos = new Vector3(Mathf.Round(hit.point.x), 0, Mathf.Round(hit.point.z));
+                if (OutSideBorder(gridPos)) return;
                 if (hit.transform.tag == "Placeable")
                 {
-                    Vector3 gridPos = new Vector3(Mathf.Round(hit.point.x), 0, Mathf.Round(hit.point.z));
                     Instantiate(platform, gridPos, platform.transform.rotation);
                 }
             }
         }
     }
+
     private void spawnGrid()
     {
         for (int i = 0; i < newLevel.WorldSize.y; i++)
@@ -48,7 +50,6 @@ public class CreateMap : MonoBehaviour
                     p = Instantiate(platform);
                     p.transform.position = new Vector3(i, 0, j);
                     p.transform.SetParent(transform);
-                    Debug.Log("b");
                     grid.Add(p);
                 }
             }
@@ -59,5 +60,10 @@ public class CreateMap : MonoBehaviour
     {
         newLevel.WorldSize = new Vector2(int.Parse(inputField.text), int.Parse(inputField.text));
         spawnGrid();
+    }
+    private bool OutSideBorder(Vector2 val)
+    {
+        return ((val.x <= -newLevel.WorldSize.x / 2 || val.x >= newLevel.WorldSize.x / 2))
+        || ((val.y <= -newLevel.WorldSize.y / 2 || val.y >= newLevel.WorldSize.y / 2));
     }
 }
