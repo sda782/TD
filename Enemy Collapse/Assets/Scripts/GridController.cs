@@ -21,6 +21,7 @@ public class GridController : MonoBehaviour
         spawnGrid();
         setPathModel();
         clearGrid();
+        setOutSideDecor();
     }
 
     private void spawnGrid()
@@ -110,5 +111,14 @@ public class GridController : MonoBehaviour
     private void clearGrid()
     {
         foreach (GameObject p in grid) if (p.name == "emptyPlatform") Destroy(p);
+        grid.RemoveAll(p => p.name == "emptyPlatform");
+    }
+
+    private void setOutSideDecor()
+    {
+        Instantiate(models[3], Vector3.left * Level.levelData.WorldSize.x, transform.rotation);
+        Instantiate(models[3], Vector3.right * Level.levelData.WorldSize.x, transform.rotation);
+        Instantiate(models[3], Vector3.forward * Level.levelData.WorldSize.y, transform.rotation);
+        Instantiate(models[3], Vector3.back * Level.levelData.WorldSize.y, transform.rotation);
     }
 }

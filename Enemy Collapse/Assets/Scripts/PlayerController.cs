@@ -18,14 +18,9 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (canShoot == false)
-        {
-            Debug.Log("can shoot is false;" + coolDownTimer);
-            coolDownTimer -= Time.deltaTime;
-        }
+        if (canShoot == false) coolDownTimer -= Time.deltaTime;
         if (coolDownTimer <= 0)
         {
-            Debug.Log("can shoot is true;");
             canShoot = true;
             coolDownTimer = 3f;
         }
