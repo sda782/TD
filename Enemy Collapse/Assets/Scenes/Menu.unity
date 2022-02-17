@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Select First Level
+  m_Text: Standard Map
 --- !u!222 &186344688
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Select Second Level
+  m_Text: Big BOI
 --- !u!222 &1762710813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1174,7 +1174,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Select Third Level
+  m_Text: Uzumaki
 --- !u!222 &2108066444
 CanvasRenderer:
   m_ObjectHideFlags: 0

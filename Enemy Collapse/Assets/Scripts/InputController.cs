@@ -9,7 +9,7 @@ public class InputController : MonoBehaviour
     [SerializeField]
     public UnityEvent StartGame;
     [SerializeField]
-    public UnityEvent<GameObject> HitEnemy;
+    public UnityEvent Shoot;
     [SerializeField]
     public UnityEvent<Vector3> PlaceTurret;
     [SerializeField]
@@ -60,15 +60,7 @@ public class InputController : MonoBehaviour
 
     private void leftClickHandler()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.transform.tag == "Enemy")
-            {
-                handleEnemy(hit);
-            }
-        }
+        Shoot?.Invoke();
     }
 
     private void placeObj(RaycastHit hit)
@@ -80,8 +72,5 @@ public class InputController : MonoBehaviour
     {
         menu.SetActive(!menu.activeSelf);
     }
-    private void handleEnemy(RaycastHit hit)
-    {
-        HitEnemy?.Invoke(hit.transform.parent.gameObject);
-    }
+
 }
