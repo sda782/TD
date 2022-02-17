@@ -48,10 +48,10 @@ public class FreeCam : MonoBehaviour
     /// Set to true when free looking (on right mouse button).
     /// </summary>
     private bool looking = false;
-    void Start()
+    /* void Start()
     {
         StartLooking();
-    }
+    } */
 
     void Update()
     {
@@ -114,11 +114,11 @@ public class FreeCam : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            StopLooking();
+            StartLooking();
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            StartLooking();
+            StopLooking();
         }
     }
 
