@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class InputController : MonoBehaviour
 {
@@ -44,6 +45,10 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             hideMenu();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene("Menu");
         }
 
     }
