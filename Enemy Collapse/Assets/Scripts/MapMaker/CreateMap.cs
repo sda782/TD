@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,17 @@ public class CreateMap : MonoBehaviour
     [SerializeField]
     private GameObject platform;
     private List<GameObject> grid;
+    private Vector3 lastPos;
     private Camera cam;
+    private bool isStartPoint;
     void Start()
     {
+        isStartPoint = true;
         cam = Camera.main;
         grid = new List<GameObject>();
         newLevel = (LevelData)ScriptableObject.CreateInstance("LevelData");
         newLevel.Name = "MapMaker";
+        newLevel.Path = new List<Vector2>();
     }
     void Update()
     {
@@ -32,10 +37,28 @@ public class CreateMap : MonoBehaviour
                 if (OutSideBorder(gridPos)) return;
                 if (hit.transform.tag == "Placeable")
                 {
-                    Instantiate(platform, gridPos, platform.transform.rotation);
+                    GameObject g = Instantiate(platform, gridPos, platform.transform.rotation);
+                    if (isStartPoint)
+                    {
+                        newLevel.StartPoint = g.transform.position;
+                        lastPos = g.transform.position;
+                        isStartPoint = false;
+                    }
+                    else
+                    {
+                        AddDirection(g);
+                    }
                 }
             }
         }
+    }
+
+    private void AddDirection(GameObject g)
+    {
+        Vector3 dir3 = lastPos - g.transform.position;
+        Vector2 dir = new Vector2(dir3.x, dir3.z);
+        newLevel.Path.Add(dir.normalized);
+        Debug.Log(dir);
     }
 
     private void spawnGrid()
