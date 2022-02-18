@@ -67,6 +67,7 @@ public class CreateMap : MonoBehaviour
     private void AddDirection(GameObject g)
     {
         Vector3 dir3 = lastPos - g.transform.position;
+        lastPos += dir3;
         Vector2 dir = new Vector2(dir3.x, dir3.z);
         newLevel.Path.Add(dir);
     }
