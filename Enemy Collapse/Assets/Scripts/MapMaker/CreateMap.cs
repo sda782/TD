@@ -65,7 +65,6 @@ public class CreateMap : MonoBehaviour
         Vector3 dir3 = lastPos - g.transform.position;
         Vector2 dir = new Vector2(dir3.x, dir3.z);
         newLevel.Path.Add(dir.normalized);
-        Debug.Log(dir);
     }
 
     private void spawnGrid()

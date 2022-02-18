@@ -28,12 +28,10 @@ public class MenuUI : MonoBehaviour
             g.onClick.AddListener(() => SetLvlIndex(x));
             g.transform.position = content.position + new Vector3(315, yH, 0);
             yH -= 90;
-            Debug.Log(levels[i] + " " + i);
         }
     }
     public void SetLvlIndex(int index)
     {
-        Debug.Log("tried to load " + index);
         MenuData.Level = levels[index];
         SceneManager.LoadScene("SampleScene");
     }
@@ -41,7 +39,6 @@ public class MenuUI : MonoBehaviour
     public void LoadLevel()
     {
         LevelData lvl = SaveLoad.LoadFromFile("hello");
-        Debug.Log(lvl.Name);
     }
 
     public void SendToMapMaker()
