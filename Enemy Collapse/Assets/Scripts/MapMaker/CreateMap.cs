@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +8,8 @@ public class CreateMap : MonoBehaviour
     private LevelData newLevel;
     [SerializeField]
     private InputField inputField;
+    [SerializeField]
+    private InputField inputFieldName;
     [SerializeField]
     private GameObject platform;
     private List<GameObject> grid;
@@ -21,7 +22,6 @@ public class CreateMap : MonoBehaviour
         cam = Camera.main;
         grid = new List<GameObject>();
         newLevel = (LevelData)ScriptableObject.CreateInstance("LevelData");
-        newLevel.Name = "MapMaker";
         newLevel.Path = new List<Vector2>();
     }
     void Update()
@@ -51,6 +51,13 @@ public class CreateMap : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SaveLevel()
+    {
+        if (String.IsNullOrEmpty(inputFieldName.text)) return;
+        newLevel.Name = inputFieldName.text;
+        SaveLoad.SaveToFile(newLevel);
     }
 
     private void AddDirection(GameObject g)

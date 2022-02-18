@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class MenuData
 {
-    public static int LevelIndex { get; set; }
+    public static LevelData Level { get; set; }
 }
