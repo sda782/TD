@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CreateMap : MonoBehaviour
@@ -57,14 +59,16 @@ public class CreateMap : MonoBehaviour
     {
         if (String.IsNullOrEmpty(inputFieldName.text)) return;
         newLevel.Name = inputFieldName.text;
-        SaveLoad.SaveToFile(newLevel);
+        MenuData.Level = newLevel;
+        SceneManager.LoadScene("SampleScene");
+        //SaveLoad.SaveToFile(newLevel);
     }
 
     private void AddDirection(GameObject g)
     {
         Vector3 dir3 = lastPos - g.transform.position;
         Vector2 dir = new Vector2(dir3.x, dir3.z);
-        newLevel.Path.Add(dir.normalized);
+        newLevel.Path.Add(dir);
     }
 
     private void spawnGrid()
