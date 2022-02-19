@@ -57,13 +57,21 @@ public class CreateMap : MonoBehaviour
         Vector2 dir = new Vector2(dir3.x, dir3.z);
         newLevel.Path.Add(dir);
     }
+    public void PlayLevel()
+    {
+        MenuData.Level = newLevel;
+        MenuData.Level.Path = newLevel.Path;
+        SceneManager.LoadScene("SampleScene");
+    }
     public void SaveLevel()
     {
         if (String.IsNullOrEmpty(inputFieldName.text)) return;
         newLevel.Name = inputFieldName.text;
-        MenuData.Level = newLevel;
-        MenuData.Level.Path = newLevel.Path;
-        SceneManager.LoadScene("SampleScene");
+        /* MenuData.Level = newLevel;
+        MenuData.Level.Path = newLevel.Path;*/
+        SaveLoad.SaveToFile(newLevel);
+        SceneManager.LoadScene("Menu");
+
     }
     private void spawnGrid()
     {

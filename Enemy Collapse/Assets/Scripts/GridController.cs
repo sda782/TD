@@ -20,8 +20,8 @@ public class GridController : MonoBehaviour
         grid_with_path = new List<GameObject>();
         spawnGrid();
         setPathModel();
-        clearGrid();
-        //setOutSideDecor();
+        //clearGrid();
+        setOutSideDecor();
     }
 
     private void spawnGrid()
@@ -61,6 +61,9 @@ public class GridController : MonoBehaviour
                 currentPos += new Vector3(dir.x, 0, dir.y);
             }
         }
+        GameObject g = grid_with_path.Last();
+        Destroy(g);
+        grid_with_path.Remove(g);
         setModel(Level.levelData.EndPoint, "tower", grid_with_path);
     }
     private Vector3 getNextDir(Vector3 cur, Vector2 dir)

@@ -8,13 +8,25 @@ public class SaveLoad : MonoBehaviour
     public static void SaveToFile(LevelData lvl)
     {
         string jsonString = JsonUtility.ToJson(lvl);
-        File.WriteAllText("./data/" + lvl.Name + ".json", jsonString);
+        File.WriteAllText("./Data/JsonLevels/" + lvl.Name + ".json", jsonString);
     }
 
     public static LevelData LoadFromFile(string name)
     {
-        string fromFile = File.ReadAllText("./data/" + name + ".json");
-        LevelData fromJson = JsonUtility.FromJson<LevelData>(fromFile);
+        string fromFile = File.ReadAllText(name);
+        LevelData fromJson = (LevelData)ScriptableObject.CreateInstance(typeof(LevelData));
+        JsonUtility.FromJsonOverwrite(fromFile, fromJson);
         return fromJson;
+    }
+
+    public static List<LevelData> LoadAllLevels()
+    {
+        List<LevelData> levels = new List<LevelData>();
+        string[] files = Directory.GetFiles("./Data/JsonLevels/");
+        foreach (string filename in files)
+        {
+            levels.Add(LoadFromFile(filename));
+        }
+        return levels;
     }
 }

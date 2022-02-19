@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "Map/Level")]
 public class LevelData : ScriptableObject
 {
     [field: SerializeField]
