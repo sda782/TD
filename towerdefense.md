@@ -21,3 +21,22 @@
     -   Inner bound
     -   Outer bound
 -   UI
+
+##  Enemy types
+-   Basic boi
+    -   Hp = 10
+    -   Atk = 1
+-   Tanky boi
+    -   Hp = 20
+    -   Atk = 0
+-   Spiky boi
+    -   Hp = 5
+    -   Atk = 5
+
+##  Turret types
+-   Round boi
+    -   Hp = 10
+    -   Atk 2
+-   Linear boi
+    -   Hp = 10
+    -   Atk = 5

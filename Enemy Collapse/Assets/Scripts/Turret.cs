@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private EnemyManager enemyManager;
-    private int lives = 5;
+    private int lives = 10;
     void Start()
     {
         enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();

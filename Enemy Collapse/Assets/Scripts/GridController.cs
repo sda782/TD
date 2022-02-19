@@ -21,7 +21,7 @@ public class GridController : MonoBehaviour
         spawnGrid();
         setPathModel();
         clearGrid();
-        setOutSideDecor();
+        //setOutSideDecor();
     }
 
     private void spawnGrid()
@@ -35,15 +35,10 @@ public class GridController : MonoBehaviour
                 if (i == 0 || i == Level.levelData.WorldSize.y - 1 || j == 0 || j == Level.levelData.WorldSize.x - 1)
                 {
                     p = Instantiate(edge);
+                    p.transform.position = new Vector3(i, 0, j);
+                    p.transform.SetParent(transform);
+                    grid.Add(p);
                 }
-                else
-                {
-                    p = Instantiate(platform);
-                    p.name = "emptyPlatform";
-                }
-                p.transform.position = new Vector3(i, 0, j);
-                p.transform.SetParent(transform);
-                grid.Add(p);
             }
         }
         transform.position = new Vector3(0 - Level.levelData.WorldSize.x / 2, 0, 0 - Level.levelData.WorldSize.y / 2);
@@ -51,47 +46,45 @@ public class GridController : MonoBehaviour
 
     private void setPathModel()
     {
-        GameObject startObj = grid.Find(g => g.transform.position == Level.levelData.StartPoint);
-        GameObject endObj = grid.Find(g => g.transform.position == Level.levelData.EndPoint);
         Vector3 currentPos = Level.levelData.StartPoint;
-
-        foreach (var dir in Level.levelData.Path)
+        if (Level.levelData.Path.Count > 0)
         {
-            GameObject p = grid.Find(g => g.transform.position == currentPos);
-            for (int i = 0; i < dir.magnitude; i++)
+            setModel(Level.levelData.StartPoint, "portal", grid_with_path);
+            Vector3 p = Level.levelData.StartPoint;
+            foreach (var dir in Level.levelData.Path)
             {
-                p = getNextDir(p, dir, grid);
-                setModel(p, "platform");
+                for (int i = 0; i < dir.magnitude; i++)
+                {
+                    p = getNextDir(p, dir);
+                    setModel(p, "platform", grid_with_path);
+                }
+                currentPos += new Vector3(dir.x, 0, dir.y);
             }
-            currentPos += new Vector3(dir.x, 0, dir.y);
         }
-        setModel(startObj, "portal");
-        setModel(endObj, "tower");
+        setModel(Level.levelData.EndPoint, "tower", grid_with_path);
     }
-    private GameObject getNextDir(GameObject obj, Vector2 dir, List<GameObject> grid)
+    private Vector3 getNextDir(Vector3 cur, Vector2 dir)
     {
-        int index = grid.FindIndex(g => g == obj);
-        GameObject g = null;
+        Vector3 next = cur;
         switch (dir.normalized)
         {
             case Vector2 v when v.Equals(Vector2.right):
-                g = grid[index + (int)Level.levelData.WorldSize.x];
+                next += Vector3.right;
                 break;
             case Vector2 v when v.Equals(Vector2.up):
-                g = grid[++index];
+                next += Vector3.forward;
                 break;
             case Vector2 v when v.Equals(Vector2.left):
-                g = grid[index - (int)Level.levelData.WorldSize.x];
+                next += Vector3.left;
                 break;
             case Vector2 v when v.Equals(Vector2.down):
-                g = grid[--index];
+                next += Vector3.back;
                 break;
         }
-        if (g == null) return null;
-        return g;
+        return next;
     }
 
-    private void setModel(GameObject p, string type)
+    private void setModel(Vector3 p, string type, List<GameObject> toAdd)
     {
         GameObject toSpawn = models[0];
         switch (type)
@@ -103,9 +96,9 @@ public class GridController : MonoBehaviour
                 toSpawn = models[2];
                 break;
         }
-        GameObject np = Instantiate(toSpawn, p.transform);
+        GameObject np = Instantiate(toSpawn, p, toSpawn.transform.rotation);
         np.transform.SetParent(transform);
-        grid_with_path.Add(np);
+        toAdd.Add(np);
     }
 
     private void clearGrid()

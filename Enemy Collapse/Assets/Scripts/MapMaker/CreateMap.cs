@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,9 +16,9 @@ public class CreateMap : MonoBehaviour
     [SerializeField]
     private GameObject platform;
     private List<GameObject> grid;
-    private Vector3 lastPos;
     private Camera cam;
     private bool isStartPoint;
+    private Vector3 currentPos;
     void Start()
     {
         isStartPoint = true;
@@ -43,35 +44,29 @@ public class CreateMap : MonoBehaviour
                     if (isStartPoint)
                     {
                         newLevel.StartPoint = g.transform.position;
-                        lastPos = g.transform.position;
+                        currentPos = newLevel.StartPoint;
                         isStartPoint = false;
                     }
-                    else
-                    {
-                        AddDirection(g);
-                    }
+                    else AddDirection(g);
                 }
             }
         }
     }
-
+    private void AddDirection(GameObject g)
+    {
+        Vector3 dir3 = g.transform.position - currentPos;
+        currentPos += dir3;
+        Vector2 dir = new Vector2(dir3.x, dir3.z);
+        newLevel.Path.Add(dir);
+    }
     public void SaveLevel()
     {
         if (String.IsNullOrEmpty(inputFieldName.text)) return;
         newLevel.Name = inputFieldName.text;
         MenuData.Level = newLevel;
+        MenuData.Level.Path = newLevel.Path;
         SceneManager.LoadScene("SampleScene");
-        //SaveLoad.SaveToFile(newLevel);
     }
-
-    private void AddDirection(GameObject g)
-    {
-        Vector3 dir3 = lastPos - g.transform.position;
-        lastPos += dir3;
-        Vector2 dir = new Vector2(dir3.x, dir3.z);
-        newLevel.Path.Add(dir);
-    }
-
     private void spawnGrid()
     {
         for (int i = 0; i < newLevel.WorldSize.y; i++)
