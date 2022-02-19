@@ -4,8 +4,8 @@
 +   Moodboard
 -   Concept Art
 +   Grid Spawing
--   Path generation
-    -   Path maker
++   Path generation
+    +   Path maker
     +   Path loader
 +   Camera Control
 -   Building placing
@@ -21,6 +21,8 @@
     -   Inner bound
     -   Outer bound
 -   UI
+    -   Buttons
+    -   Weapon CD
 
 ##  Enemy types
 -   Basic boi

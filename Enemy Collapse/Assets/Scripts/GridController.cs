@@ -19,7 +19,6 @@ public class GridController : MonoBehaviour
         grid_with_path = new List<GameObject>();
         spawnGrid();
         setPathModel();
-        //clearGrid();
         setOutSideDecor();
     }
 
@@ -101,12 +100,6 @@ public class GridController : MonoBehaviour
         GameObject np = Instantiate(toSpawn, p, toSpawn.transform.rotation);
         np.transform.SetParent(transform);
         toAdd.Add(np);
-    }
-
-    private void clearGrid()
-    {
-        foreach (GameObject p in grid) if (p.name == "emptyPlatform") Destroy(p);
-        grid.RemoveAll(p => p.name == "emptyPlatform");
     }
 
     private void setOutSideDecor()
