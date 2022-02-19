@@ -67,8 +67,6 @@ public class CreateMap : MonoBehaviour
     {
         if (String.IsNullOrEmpty(inputFieldName.text)) return;
         newLevel.Name = inputFieldName.text;
-        /* MenuData.Level = newLevel;
-        MenuData.Level.Path = newLevel.Path;*/
         SaveLoad.SaveToFile(newLevel);
         SceneManager.LoadScene("Menu");
 

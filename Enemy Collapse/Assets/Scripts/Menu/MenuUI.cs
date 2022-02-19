@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -21,16 +22,14 @@ public class MenuUI : MonoBehaviour
         LevelData[] levelsArr = (LevelData[])Resources.LoadAll<LevelData>("Levels");
         levels = levelsArr.ToList();
         levels.AddRange(SaveLoad.LoadAllLevels());
-        int yH = -130;
         for (int i = 0; i < levels.Count; i++)
         {
             int x = i;
             Button g = Instantiate(button);
             g.GetComponentInChildren<Text>().text = levels[i].Name;
             g.transform.SetParent(content.transform);
+            g.transform.localScale = Vector3.one;
             g.onClick.AddListener(() => SetLvlIndex(x));
-            g.transform.position = content.position + new Vector3(315, yH, 0);
-            yH -= 90;
         }
 
     }
@@ -43,5 +42,10 @@ public class MenuUI : MonoBehaviour
     public void SendToMapMaker()
     {
         SceneManager.LoadScene("MapMaker");
+    }
+
+    public void ShowLevelFolder()
+    {
+        SaveLoad.ShowLevelFolder();
     }
 }

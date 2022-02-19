@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 
@@ -28,5 +30,18 @@ public class SaveLoad : MonoBehaviour
             levels.Add(LoadFromFile(filename));
         }
         return levels;
+    }
+    public static void ShowLevelFolder()
+    {
+        if (Directory.Exists(Path.GetFullPath("./Data/JsonLevels/")))
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                Arguments = Path.GetFullPath("./Data/JsonLevels/"),
+                FileName = "explorer.exe"
+            };
+
+            Process.Start(startInfo);
+        }
     }
 }
