@@ -5,15 +5,23 @@ using UnityEngine;
 
 public class EnemyData : MonoBehaviour
 {
+    [SerializeField]
     private EnemySO enemyType;
     private int HP;
     private int ATK;
     void Start()
     {
-        enemyType = EnemyManager.GetRandomEnemyType;
+        if (enemyType == null) return;
         HP = enemyType.Health;
         ATK = enemyType.Attack;
     }
+    public void SetType(EnemySO etype)
+    {
+        enemyType = etype;
+        HP = enemyType.Health;
+        ATK = enemyType.Attack;
+    }
+
     public int Attak()
     {
         return ATK;
@@ -26,6 +34,6 @@ public class EnemyData : MonoBehaviour
 
     private void Kill()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

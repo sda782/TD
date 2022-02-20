@@ -9,7 +9,7 @@ public class Turret : MonoBehaviour
         {
             EnemyData ed = col.gameObject.GetComponent<EnemyData>();
             lives -= ed.Attak();
-            ed.TakeDamage(1);
+            ed.TakeDamage(5);
             if (lives <= 0)
             {
                 Destroy(gameObject);
