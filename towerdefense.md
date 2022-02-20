@@ -14,7 +14,7 @@
 -   Enemy spawing
     +   Movement
     -   animation
-+   Tower Attack
++   Turret Attack
     +   hit enemy
     +   visualize attack
 -   Level Details
@@ -23,17 +23,19 @@
 -   UI
     -   Buttons
     +   Weapon CD
+-   Tower/Base
+    -   Take damage
 
 ##  Enemy types
--   Basic boi
-    -   Hp = 10
-    -   Atk = 1
--   Tanky boi
-    -   Hp = 20
-    -   Atk = 0
--   Spiky boi
-    -   Hp = 5
-    -   Atk = 5
++   Basic boi
+    +   Hp = 10
+    +   Atk = 1
++   Tanky boi
+    +   Hp = 20
+    +   Atk = 0
++   Spiky boi
+    +   Hp = 5
+    +   Atk = 5
 
 ##  Turret types
 -   Round boi
