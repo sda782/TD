@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class SaveLoad : MonoBehaviour
 {
-    public static void SaveToFile(LevelData lvl)
+    public static void SaveToFile(LevelSO lvl)
     {
         string jsonString = JsonUtility.ToJson(lvl);
         File.WriteAllText("./Data/JsonLevels/" + lvl.Name + ".json", jsonString);
     }
 
-    public static LevelData LoadFromFile(string name)
+    public static LevelSO LoadFromFile(string name)
     {
         string fromFile = File.ReadAllText(name);
-        LevelData fromJson = (LevelData)ScriptableObject.CreateInstance(typeof(LevelData));
+        LevelSO fromJson = (LevelSO)ScriptableObject.CreateInstance(typeof(LevelSO));
         JsonUtility.FromJsonOverwrite(fromFile, fromJson);
         return fromJson;
     }
 
-    public static List<LevelData> LoadAllLevels()
+    public static List<LevelSO> LoadAllLevels()
     {
-        List<LevelData> levels = new List<LevelData>();
+        List<LevelSO> levels = new List<LevelSO>();
         string[] files = Directory.GetFiles("./Data/JsonLevels/");
         foreach (string filename in files)
         {

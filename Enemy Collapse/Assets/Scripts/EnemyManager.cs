@@ -7,16 +7,13 @@ public class EnemyManager : MonoBehaviour
     private GameObject enemy;
     private int amount;
     private int numberofenemies = 10;
-    private List<GameObject> enemies;
-    void Start()
-    {
-        enemies = new List<GameObject>();
-    }
+    public static EnemySO GetRandomEnemyType { get => enemySOs[Random.Range(0, enemySOs.Length)]; }
+    private static EnemySO[] enemySOs;
     public void SpawnEnemies()
     {
-        enemies.Clear();
         amount = 0;
         InvokeRepeating("spawnEnemies", 0.1f, 0.3f);
+        if (enemySOs == null) enemySOs = (EnemySO[])Resources.LoadAll<EnemySO>("Enemies");
     }
 
     private void spawnEnemies()
@@ -24,12 +21,5 @@ public class EnemyManager : MonoBehaviour
         if (amount == numberofenemies - 1) CancelInvoke();
         amount++;
         GameObject e = Instantiate(enemy);
-        e.transform.SetParent(GameObject.Find("EnemyManager").transform);
-        enemies.Add(e);
-    }
-    public void HitEnemy(GameObject enemy)
-    {
-        enemies.Remove(enemy);
-        Destroy(enemy);
     }
 }

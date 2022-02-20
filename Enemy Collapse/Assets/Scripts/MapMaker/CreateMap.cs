@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CreateMap : MonoBehaviour
 {
-    private LevelData newLevel;
+    private LevelSO newLevel;
     [SerializeField]
     private InputField inputField;
     [SerializeField]
@@ -22,7 +22,7 @@ public class CreateMap : MonoBehaviour
         isStartPoint = true;
         cam = Camera.main;
         grid = new List<GameObject>();
-        newLevel = (LevelData)ScriptableObject.CreateInstance("LevelData");
+        newLevel = (LevelSO)ScriptableObject.CreateInstance("LevelData");
         newLevel.Path = new List<Vector2>();
     }
     void Update()

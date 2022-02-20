@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
-    private List<LevelData> levels;
+    private List<LevelSO> levels;
     [SerializeField]
     private RectTransform content;
     [SerializeField]
@@ -15,7 +15,7 @@ public class MenuUI : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        LevelData[] levelsArr = (LevelData[])Resources.LoadAll<LevelData>("Levels");
+        LevelSO[] levelsArr = (LevelSO[])Resources.LoadAll<LevelSO>("Levels");
         levels = levelsArr.ToList();
         levels.AddRange(SaveLoad.LoadAllLevels());
         for (int i = 0; i < levels.Count; i++)

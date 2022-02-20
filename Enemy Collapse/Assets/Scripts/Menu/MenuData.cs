@@ -1,4 +1,4 @@
 public static class MenuData
 {
-    public static LevelData Level { get; set; }
+    public static LevelSO Level { get; set; }
 }
