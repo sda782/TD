@@ -654,7 +654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a9f897fac07074f9ef1230cfbc0461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 5923190085341809300, guid: 0ced91b1d896c624eb9133d304d4133f, type: 3}
+  turrets:
+  - {fileID: 5923190085341809300, guid: 0ced91b1d896c624eb9133d304d4133f, type: 3}
+  - {fileID: 4119893604081606357, guid: 3bbad2e7fe29d334ab4be55e090e2c26, type: 3}
 --- !u!1 &921731492
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +707,21 @@ MonoBehaviour:
       - m_Target: {fileID: 248179215}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SwitchBuilding:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 806251768}
+        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
+        m_MethodName: SwitchBuilding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

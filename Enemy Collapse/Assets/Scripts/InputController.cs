@@ -10,6 +10,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     public UnityEvent Shoot;
     [SerializeField]
+    public UnityEvent SwitchBuilding;
+    [SerializeField]
     public UnityEvent<Vector3> PlaceTurret;
     [SerializeField]
     private GameObject menu;
@@ -19,29 +21,12 @@ public class InputController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            leftClickHandler();
-
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            rightClickHandler();
-
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            StartGame?.Invoke();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            hideMenu();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
+        if (Input.GetMouseButtonDown(0)) Shoot?.Invoke();
+        if (Input.GetMouseButtonDown(1)) rightClickHandler();
+        if (Input.GetKeyDown(KeyCode.B)) StartGame?.Invoke();
+        if (Input.GetKeyDown(KeyCode.X)) menu.SetActive(!menu.activeSelf); ;
+        if (Input.GetKeyDown(KeyCode.L)) SceneManager.LoadScene("Menu");
+        if (Input.GetKeyDown(KeyCode.N)) SwitchBuilding.Invoke();
     }
 
     private void rightClickHandler()
@@ -52,24 +37,8 @@ public class InputController : MonoBehaviour
         {
             if (hit.transform.tag == "Placeable")
             {
-                placeObj(hit);
+                PlaceTurret?.Invoke(hit.point);
             }
         }
     }
-
-    private void leftClickHandler()
-    {
-        Shoot?.Invoke();
-    }
-
-    private void placeObj(RaycastHit hit)
-    {
-        PlaceTurret?.Invoke(hit.point);
-    }
-
-    private void hideMenu()
-    {
-        menu.SetActive(!menu.activeSelf);
-    }
-
 }
