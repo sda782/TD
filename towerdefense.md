@@ -13,16 +13,16 @@
     -   Preview placement
 -   Enemy spawing
     +   Movement
-    +   animation
--   Tower Attack
+    -   animation
++   Tower Attack
     +   hit enemy
-    -   visualize attack
+    +   visualize attack
 -   Level Details
     -   Inner bound
     -   Outer bound
 -   UI
     -   Buttons
-    -   Weapon CD
+    +   Weapon CD
 
 ##  Enemy types
 -   Basic boi

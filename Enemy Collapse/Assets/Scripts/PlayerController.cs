@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
         {
             coolDownTimer -= Time.deltaTime;
             reloading.text = "CD: " + coolDownTimer.ToString("F2");
-            Debug.Log((1.5f / coolDownTimer));
         }
         if (coolDownTimer <= 0)
         {

@@ -22,7 +22,7 @@ public class EnemyData : MonoBehaviour
         ATK = enemyType.Attack;
     }
 
-    public int Attak()
+    public int Attack()
     {
         return ATK;
     }

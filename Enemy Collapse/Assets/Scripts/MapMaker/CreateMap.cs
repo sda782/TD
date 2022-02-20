@@ -22,7 +22,7 @@ public class CreateMap : MonoBehaviour
         isStartPoint = true;
         cam = Camera.main;
         grid = new List<GameObject>();
-        newLevel = (LevelSO)ScriptableObject.CreateInstance("LevelData");
+        newLevel = (LevelSO)ScriptableObject.CreateInstance("LevelSO");
         newLevel.Path = new List<Vector2>();
     }
     void Update()
@@ -91,6 +91,7 @@ public class CreateMap : MonoBehaviour
     }
     public void SetWorldSize()
     {
+        if (int.Parse(inputField.text) % 2 != 0) return;
         newLevel.WorldSize = new Vector2(int.Parse(inputField.text), int.Parse(inputField.text));
         spawnGrid();
     }
