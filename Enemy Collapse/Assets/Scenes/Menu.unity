@@ -1158,7 +1158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Other World Operation
+  m_Text: Eater of Worlds
 --- !u!222 &2080633826
 CanvasRenderer:
   m_ObjectHideFlags: 0
