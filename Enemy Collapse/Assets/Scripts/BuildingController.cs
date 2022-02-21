@@ -23,6 +23,7 @@ public class BuildingController : MonoBehaviour
     }
     public void PlaceTurret(Vector3 pos)
     {
+        if (previewObj == null) return;
         Quaternion r = previewObj.transform.rotation;
         StopPlacement();
         Vector3 gridPos = new Vector3(Mathf.Round(pos.x), 0, Mathf.Round(pos.z));
@@ -55,6 +56,7 @@ public class BuildingController : MonoBehaviour
     }
     private void showPreview()
     {
+        if (previewObj == null) return;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))

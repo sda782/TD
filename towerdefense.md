@@ -8,9 +8,9 @@
     +   Path maker
     +   Path loader
 +   Camera Control
--   Building placing
++   Building placing
     +   Placing in grid
-    -   Preview placement
+    +   Preview placement
 -   Enemy spawing
     +   Movement
     -   animation
