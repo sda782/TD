@@ -44,7 +44,7 @@ public class BuildingController : MonoBehaviour
             if (hit.transform.tag == "Placeable")
             {
                 Vector3 gridPos = new Vector3(Mathf.Round(hit.point.x), 0, Mathf.Round(hit.point.z));
-                previewObj = Instantiate(turrets[currentSelected], gridPos, turrets[currentSelected].transform.rotation);
+                previewObj = Instantiate(turrets_models[currentSelected], gridPos, turrets_models[currentSelected].transform.rotation);
                 previewObj.layer = 2;
             }
         }
