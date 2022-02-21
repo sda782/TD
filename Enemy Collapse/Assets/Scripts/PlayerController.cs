@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         cam = Camera.main;
         canShoot = true;
-        coolDownTimer = 1.5f;
+        coolDownTimer = 0.2f;
     }
     void Update()
     {
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         {
             reloading.text = "CD: 0";
             canShoot = true;
-            coolDownTimer = 1.5f;
+            coolDownTimer = 0.2f;
         }
 
     }

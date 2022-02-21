@@ -14,6 +14,7 @@ public class CreateMap : MonoBehaviour
     [SerializeField]
     private GameObject platform;
     private List<GameObject> grid;
+    private List<GameObject> paths;
     private Camera cam;
     private bool isStartPoint;
     private Vector3 currentPos;
@@ -22,6 +23,7 @@ public class CreateMap : MonoBehaviour
         isStartPoint = true;
         cam = Camera.main;
         grid = new List<GameObject>();
+        paths = new List<GameObject>();
         newLevel = (LevelSO)ScriptableObject.CreateInstance("LevelSO");
         newLevel.Path = new List<Vector2>();
     }
@@ -36,9 +38,21 @@ public class CreateMap : MonoBehaviour
             {
                 Vector3 gridPos = new Vector3(Mathf.Round(hit.point.x), 0, Mathf.Round(hit.point.z));
                 if (OutSideBorder(gridPos)) return;
+                if (hit.transform.tag == "Road")
+                {
+                    int index = paths.FindIndex(g => g == hit.transform.gameObject);
+                    for (int i = index; i < paths.Count; i++)
+                    {
+                        GameObject g = paths[index];
+                        paths.RemoveAt(index);
+                        Destroy(g);
+                        if (newLevel.Path.Count > 1) newLevel.Path.RemoveAt(index - 1);
+                    }
+                }
                 if (hit.transform.tag == "Placeable")
                 {
                     GameObject g = Instantiate(platform, gridPos, platform.transform.rotation);
+                    paths.Add(g);
                     if (isStartPoint)
                     {
                         newLevel.StartPoint = g.transform.position;
