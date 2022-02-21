@@ -37,18 +37,20 @@ public class CreateMap : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Vector3 gridPos = new Vector3(Mathf.Round(hit.point.x), 0, Mathf.Round(hit.point.z));
+
                 if (OutSideBorder(gridPos)) return;
                 if (hit.transform.tag == "Road")
                 {
                     int index = paths.FindIndex(g => g == hit.transform.gameObject);
                     for (int i = index; i < paths.Count; i++)
                     {
-                        GameObject g = paths[index];
-                        paths.RemoveAt(index);
-                        Destroy(g);
-                        if (newLevel.Path.Count > 1) newLevel.Path.RemoveAt(index - 1);
+                        Destroy(paths[i]);
+                        if (newLevel.Path.Count > 0) newLevel.Path.RemoveAt(index - 1);
                     }
+                    paths.RemoveRange(index, paths.Count - index);
+                    resetCurrentPos();
                 }
+                if (!checkIfInLine(currentPos, gridPos) && !isStartPoint) return;
                 if (hit.transform.tag == "Placeable")
                 {
                     GameObject g = Instantiate(platform, gridPos, platform.transform.rotation);
@@ -64,6 +66,16 @@ public class CreateMap : MonoBehaviour
             }
         }
     }
+
+    private void resetCurrentPos()
+    {
+        currentPos = newLevel.StartPoint;
+        foreach (Vector2 p in newLevel.Path)
+        {
+            currentPos += new Vector3(p.x, 0, p.y);
+        }
+    }
+
     private void AddDirection(GameObject g)
     {
         Vector3 dir3 = g.transform.position - currentPos;
@@ -113,5 +125,14 @@ public class CreateMap : MonoBehaviour
     {
         return ((val.x <= -newLevel.WorldSize.x / 2 || val.x >= newLevel.WorldSize.x / 2))
         || ((val.y <= -newLevel.WorldSize.y / 2 || val.y >= newLevel.WorldSize.y / 2));
+    }
+
+    private bool checkIfInLine(Vector3 oldPos, Vector3 pos)
+    {
+        if (Vector3.Distance(oldPos, oldPos + Vector3.forward) + Vector3.Distance(pos, oldPos + Vector3.forward) == Vector3.Distance(oldPos, pos)) return true;
+        if (Vector3.Distance(oldPos, oldPos + Vector3.left) + Vector3.Distance(pos, oldPos + Vector3.left) == Vector3.Distance(oldPos, pos)) return true;
+        if (Vector3.Distance(oldPos, oldPos + Vector3.back) + Vector3.Distance(pos, oldPos + Vector3.back) == Vector3.Distance(oldPos, pos)) return true;
+        if (Vector3.Distance(oldPos, oldPos + Vector3.right) + Vector3.Distance(pos, oldPos + Vector3.right) == Vector3.Distance(oldPos, pos)) return true;
+        return false;
     }
 }

@@ -21,6 +21,7 @@ public class SaveLoad : MonoBehaviour
 
     public static List<LevelSO> LoadAllLevels()
     {
+        CheckFolders();
         List<LevelSO> levels = new List<LevelSO>();
         string[] files = Directory.GetFiles("./Data/JsonLevels/");
         foreach (string filename in files)
@@ -40,6 +41,17 @@ public class SaveLoad : MonoBehaviour
             };
 
             Process.Start(startInfo);
+        }
+    }
+    public static void CheckFolders()
+    {
+        if (!Directory.Exists(Path.GetFullPath("./Data")))
+        {
+            DirectoryInfo di = Directory.CreateDirectory(Path.GetFullPath("./Data"));
+        }
+        if (!Directory.Exists(Path.GetFullPath("./Data/JsonLevels")))
+        {
+            DirectoryInfo di = Directory.CreateDirectory(Path.GetFullPath("./Data/JsonLevels"));
         }
     }
 }
