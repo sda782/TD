@@ -14,6 +14,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     public UnityEvent<Vector3> PlaceTurret;
     [SerializeField]
+    public UnityEvent StartPlacement;
+    [SerializeField]
     private GameObject menu;
     void Awake()
     {
@@ -22,12 +24,14 @@ public class InputController : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) Shoot?.Invoke();
-        if (Input.GetMouseButtonDown(1)) rightClickHandler();
+        if (Input.GetMouseButtonDown(1)) StartPlacement?.Invoke();
+        if (Input.GetMouseButtonUp(1)) rightClickHandler();
         if (Input.GetKeyDown(KeyCode.B)) StartGame?.Invoke();
         if (Input.GetKeyDown(KeyCode.X)) menu.SetActive(!menu.activeSelf); ;
         if (Input.GetKeyDown(KeyCode.L)) SceneManager.LoadScene("Menu");
         if (Input.GetKeyDown(KeyCode.N)) SwitchBuilding.Invoke();
     }
+
 
     private void rightClickHandler()
     {

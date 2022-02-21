@@ -55,6 +55,6 @@ public class PlayerController : MonoBehaviour
     private void impactParticle(Vector3 pos)
     {
         ParticleSystem ips = Instantiate(onhitps, pos, onhitps.transform.rotation);
-        Destroy(ips, 100);
+        Destroy(ips.gameObject, 1);
     }
 }
