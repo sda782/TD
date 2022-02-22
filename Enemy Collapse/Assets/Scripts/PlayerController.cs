@@ -40,9 +40,8 @@ public class PlayerController : MonoBehaviour
         if (canShoot == false) return;
         canShoot = false;
         ps.Play();
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
         {
             impactParticle(hit.point);
             if (hit.transform.tag == "Enemy")

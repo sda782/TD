@@ -35,9 +35,8 @@ public class InputController : MonoBehaviour
 
     private void rightClickHandler()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
         {
             if (hit.transform.tag == "Placeable")
             {

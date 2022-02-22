@@ -2,7 +2,6 @@
 
 ##  TODO - OverView
 +   Moodboard
--   Concept Art
 +   Grid Spawing
 +   Path generation
     +   Path maker
@@ -24,7 +23,20 @@
     -   Buttons
     +   Weapon CD
 -   Tower/Base
-    -   Take damage
+    +   Take damage
+    +   Gameover
+
+##  Fixes
+-   Update levelSO to hold
+    -   Number of waves
+    -   Time between waves
+    -   Number of enemies per wave
+    -   Distribution of enemies
+-   Display Tower health
+-   Create ammo system for shooting
+-   Display health over enemies
+-   Show currently selected turret for placement
++   Fix ray cast so it isn't based on mouse position
 
 ##  Enemy types
 +   Basic boi
@@ -38,9 +50,9 @@
     +   Atk = 5
 
 ##  Turret types
--   Round boi
-    -   Hp = 10
-    -   Atk 2
--   Linear boi
-    -   Hp = 10
-    -   Atk = 5
++   Round boi
+    +   Hp = 10
+    +   Atk 2
++   Linear boi
+    +   Hp = 10
+    +   Atk = 5
