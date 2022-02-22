@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             impactParticle(hit.point);
             if (hit.transform.tag == "Enemy")
             {
-                hit.transform.gameObject.GetComponent<EnemyData>().TakeDamage(100);
+                hit.transform.gameObject.GetComponent<EnemyData>().TakeDamage(5);
             }
         }
     }

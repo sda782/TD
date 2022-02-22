@@ -1,43 +1,79 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 
 public class Turret : MonoBehaviour
 {
-    private int lives = 10;
+    private int lives;
     private ParticleSystem ps;
-    private GameObject target;
+    private ParticleSystem pshit;
+    private List<GameObject> targetList;
+    [SerializeField]
+    private TurretSO turretSO;
+    private float coolDown;
     void Start()
     {
-        target = null;
+        targetList = new List<GameObject>();
         ps = GetComponentInChildren<ParticleSystem>();
+        coolDown = turretSO.AtkSpeed;
+        lives = turretSO.Health;
+    }
+
+    void Update()
+    {
+        if (targetList.Count <= 0) return;
+        coolDown -= Time.deltaTime;
+        if (coolDown <= 0)
+        {
+            coolDown = turretSO.AtkSpeed;
+            targetList.RemoveAll(g => g == null);
+            Attack();
+        }
     }
     private void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Enemy" && target == null)
+        if (col.tag == "Enemy")
         {
-            target = col.gameObject;
-            InvokeRepeating("Attack", 0, 0.5f);
+            targetList.Add(col.gameObject);
         }
     }
-    private void OnTriggerLeave(Collider col)
+    private void OnTriggerExit(Collider col)
     {
-        if (col.gameObject == target)
+        if (col.tag == "Enemy")
         {
-            target = null;
-            CancelInvoke();
+            targetList.Remove(col.gameObject);
         }
     }
 
     private void Attack()
     {
-        if (target.gameObject == null) return;
+        GameObject target = getNearest();
+        if (target == null) return;
         ps.Play();
-        EnemyData ed = target.gameObject.GetComponent<EnemyData>();
+        EnemyData ed = target.GetComponent<EnemyData>();
         lives -= ed.Attack();
-        ed.TakeDamage(5);
+        ed.TakeDamage(turretSO.Atk);
         if (lives <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    private GameObject getNearest()
+    {
+        float maxDist = 100;
+        GameObject nearestGameObject = null;
+        foreach (var g in targetList)
+        {
+            float dist = Vector3.Distance(transform.position, g.transform.position);
+            if (dist <= 100)
+            {
+                maxDist = dist;
+                nearestGameObject = g;
+            }
+        }
+
+        return nearestGameObject;
     }
 }

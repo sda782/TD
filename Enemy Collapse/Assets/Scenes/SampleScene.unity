@@ -242,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &61460644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ MonoBehaviour:
   models:
   - {fileID: 8190794171886317029, guid: 2865f88c5e778894cb5a0d16f28f88af, type: 3}
   - {fileID: 1185382832532073309, guid: 3c706b5f308b39f489249e8a11d2d79e, type: 3}
-  - {fileID: 1185382832532073309, guid: 3c706b5f308b39f489249e8a11d2d79e, type: 3}
+  - {fileID: 751917790877708081, guid: ab8cf6474b0083e4fbc2c685b0b0fa58, type: 3}
   - {fileID: 919132149155446097, guid: 2b85f9858b52b354094285f01a6954b9, type: 3}
   platform: {fileID: 9047710803305466053, guid: 6a89dbb37ea99484bac492d737ea63a5, type: 3}
   edge: {fileID: 1185382832532073309, guid: 3c706b5f308b39f489249e8a11d2d79e, type: 3}
@@ -744,21 +744,6 @@ MonoBehaviour:
       - m_Target: {fileID: 806251768}
         m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
         m_MethodName: StartPreview
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  StopPlacement:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 806251768}
-        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
-        m_MethodName: StopPlacement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
