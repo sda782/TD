@@ -33,7 +33,9 @@ public class EntityMovement : MonoBehaviour
         }
         if (step == Level.levelData.Path.Count)
         {
-            StartPos();
+            EnemyData ed = GetComponentInChildren<EnemyData>();
+            Tower.RemoveHealth(ed.Attack());
+            Destroy(gameObject);
         }
     }
 
