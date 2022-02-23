@@ -32,10 +32,11 @@
     -   Time between waves
     -   Number of enemies per wave
     -   Distribution of enemies
--   Display Tower health
 -   Create ammo system for shooting
 -   Display health over enemies
--   Show currently selected turret for placement
+-   Stop preview when hovering over objects
++   Display Tower health
++   Show currently selected turret for placement
 +   Fix ray cast so it isn't based on mouse position
 
 ##  Enemy types

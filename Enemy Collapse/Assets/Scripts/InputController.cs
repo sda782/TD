@@ -16,6 +16,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     public UnityEvent StartPlacement;
     [SerializeField]
+    public UnityEvent StopPlacement;
+    [SerializeField]
     private GameObject menu;
     void Awake()
     {
@@ -42,6 +44,7 @@ public class InputController : MonoBehaviour
             {
                 PlaceTurret?.Invoke(hit.point);
             }
+            else StopPlacement?.Invoke();
         }
     }
 }

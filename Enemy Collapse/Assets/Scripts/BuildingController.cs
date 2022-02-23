@@ -54,7 +54,7 @@ public class BuildingController : MonoBehaviour
             }
         }
     }
-    private void StopPlacement()
+    public void StopPlacement()
     {
         preview = false;
         Destroy(previewObj);
