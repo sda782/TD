@@ -7,29 +7,29 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="textures.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 210 297"
+   width="210mm"
    height="297mm"
-   width="210mm">
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="textures.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="mm"
-     inkscape:cy="778.0925"
-     inkscape:cx="995.82803"
-     inkscape:zoom="0.24748737"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#787878"
-     id="base" />
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="995.82803"
+     inkscape:cy="778.0925"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -38,33 +38,44 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
+     inkscape:label="Lag 1"
      inkscape:groupmode="layer"
-     inkscape:label="Lag 1">
+     id="layer1">
     <rect
-       inkscape:export-ydpi="24.983608"
-       inkscape:export-xdpi="24.983608"
-       ry="50"
-       y="75.102737"
-       x="23.252449"
-       height="100"
-       width="600"
+       style="fill:#ffffff;fill-opacity:0.25172412;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect833"
-       style="fill:#ffffff;fill-opacity:0.25172412;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       inkscape:export-ydpi="24.983608"
-       inkscape:export-xdpi="24.983608"
-       ry="20.312483"
-       y="-1.0690781"
-       x="-68.420998"
-       height="498"
        width="600"
+       height="100"
+       x="23.252449"
+       y="75.102737"
+       ry="50"
+       inkscape:export-xdpi="24.983608"
+       inkscape:export-ydpi="24.983608" />
+    <rect
+       style="fill:#ffffff;fill-opacity:0.251724;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect845"
-       style="fill:#ffffff;fill-opacity:0.251724;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       width="600"
+       height="498"
+       x="-68.420998"
+       y="-1.0690781"
+       ry="20.312483"
+       inkscape:export-xdpi="24.983608"
+       inkscape:export-ydpi="24.983608" />
+    <rect
+       inkscape:export-ydpi="2.9028571"
+       inkscape:export-xdpi="2.9028571"
+       inkscape:export-filename="C:\Users\Andreas\Documents\GitHub\TD\Enemy Collapse\Assets\Textures\AmmoFilled.png"
+       ry="150"
+       y="-146.4637"
+       x="-342.10498"
+       height="300"
+       width="300"
+       id="rect832"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:50;stroke-linecap:round;fill-opacity:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
   </g>
 </svg>

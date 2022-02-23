@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingController : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class BuildingController : MonoBehaviour
     private Camera cam;
     private bool preview;
     private GameObject previewObj;
+    [SerializeField]
+    private Image image;
+    [SerializeField]
+    private Sprite[] sprites;
     void Awake()
     {
         preview = false;
@@ -33,6 +38,7 @@ public class BuildingController : MonoBehaviour
     {
         currentSelected++;
         if (currentSelected == turrets.Length) currentSelected = 0;
+        image.sprite = sprites[currentSelected];
     }
     public void StartPreview()
     {
