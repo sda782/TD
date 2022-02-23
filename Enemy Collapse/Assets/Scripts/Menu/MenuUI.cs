@@ -22,7 +22,7 @@ public class MenuUI : MonoBehaviour
         {
             int x = i;
             Button g = Instantiate(button);
-            g.GetComponentInChildren<Text>().text = levels[i].Name;
+            g.GetComponentInChildren<Text>().text = levels[i].Name.ToUpper();
             g.transform.SetParent(content.transform);
             g.transform.localScale = Vector3.one;
             g.onClick.AddListener(() => SetLvlIndex(x));
