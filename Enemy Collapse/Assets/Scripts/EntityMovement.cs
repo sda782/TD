@@ -34,7 +34,8 @@ public class EntityMovement : MonoBehaviour
         if (step == Level.levelData.Path.Count)
         {
             EnemyData ed = GetComponentInChildren<EnemyData>();
-            Tower.RemoveHealth(ed.Attack());
+            Tower TowerS = GameObject.Find("tower Variant(Clone)").GetComponent<Tower>();
+            TowerS.RemoveHealth(ed.Attack());
             Destroy(gameObject);
         }
     }
