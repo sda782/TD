@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class CreateMap : MonoBehaviour
     private Camera cam;
     private bool isStartPoint;
     private Vector3 currentPos;
+
     void Start()
     {
         isStartPoint = true;
@@ -66,6 +68,8 @@ public class CreateMap : MonoBehaviour
             }
         }
     }
+
+
 
     private void resetCurrentPos()
     {

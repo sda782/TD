@@ -44,13 +44,12 @@ public class FreeCam : MonoBehaviour
     /// Set to true when free looking (on right mouse button).
     /// </summary>
     private bool looking = false;
-    /* void Start()
-    {
-        StartLooking();
-    } */
+    private bool canMove = true;
+
 
     void Update()
     {
+        if (!canMove) return;
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var movementSpeed = fastMode ? this.fastMovementSpeed : this.movementSpeed;
 
@@ -141,5 +140,9 @@ public class FreeCam : MonoBehaviour
         looking = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+    public void toggleMovement(bool val)
+    {
+        canMove = val;
     }
 }

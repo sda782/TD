@@ -16,7 +16,7 @@ public class Turret : MonoBehaviour
     {
         targetList = new List<GameObject>();
         ps = GetComponentInChildren<ParticleSystem>();
-        coolDown = turretSO.AtkSpeed;
+        coolDown = 0;
         lives = turretSO.Health;
     }
 

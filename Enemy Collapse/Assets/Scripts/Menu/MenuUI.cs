@@ -18,6 +18,7 @@ public class MenuUI : MonoBehaviour
         LevelSO[] levelsArr = (LevelSO[])Resources.LoadAll<LevelSO>("Levels");
         levels = levelsArr.ToList();
         levels.AddRange(SaveLoad.LoadAllLevels());
+        levels.Sort((x, y) => x.Name.CompareTo(y.Name));
         for (int i = 0; i < levels.Count; i++)
         {
             int x = i;
