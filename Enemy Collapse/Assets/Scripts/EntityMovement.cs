@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EntityMovement : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class EntityMovement : MonoBehaviour
             EnemyData ed = GetComponentInChildren<EnemyData>();
             Tower TowerS = GameObject.Find("tower Variant(Clone)").GetComponent<Tower>();
             TowerS.RemoveHealth(ed.Attack());
+            Level.NumberOfEnemies--;
             Destroy(gameObject);
         }
     }

@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     public void SpawnEnemies()
     {
         amount = 0;
+        Level.NumberOfEnemies = numberofenemies;
         InvokeRepeating("spawnEnemy", 0.1f, 0.3f);
     }
 

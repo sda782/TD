@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b91178fe0ffc044580177f938716763, type: 3}
   m_Name: Linearboi
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 20
-  <Atk>k__BackingField: 10
+  <Health>k__BackingField: 10
+  <Atk>k__BackingField: 20
   <AtkSpeed>k__BackingField: 1
   <TType>k__BackingField: linear
-  <Cost>k__BackingField: 100
+  <Cost>k__BackingField: 600

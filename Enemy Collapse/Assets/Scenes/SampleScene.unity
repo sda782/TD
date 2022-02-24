@@ -245,6 +245,7 @@ MonoBehaviour:
   health: {fileID: 1937757789}
   waveinfo: {fileID: 411194398}
   coins: {fileID: 1539077358}
+  enemies: {fileID: 57338092}
 --- !u!1 &57338090
 GameObject:
   m_ObjectHideFlags: 0
