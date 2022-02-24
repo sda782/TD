@@ -19,12 +19,12 @@
 -   Level Details
     -   Inner bound
     -   Outer bound
--   UI
-    -   Buttons
++   UI
+    +   Buttons
     +   Weapon CD
 -   Tower/Base
     +   Take damage
-    +   Gameover
+    -   Gameover
 
 ##  Fixes
 -   Update levelSO to hold
@@ -34,7 +34,7 @@
     -   Distribution of enemies
 -   Create ammo system for shooting
 -   Display health over enemies
--   Stop preview when hovering over objects
++   Stop preview when hovering over objects
 +   Display Tower health
 +   Show currently selected turret for placement
 +   Fix ray cast so it isn't based on mouse position

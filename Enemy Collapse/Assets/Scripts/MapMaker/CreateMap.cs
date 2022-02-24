@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +13,8 @@ public class CreateMap : MonoBehaviour
     private InputField inputFieldName;
     [SerializeField]
     private GameObject platform;
+    [SerializeField]
+    private LineRenderer lineRenderer;
     private List<GameObject> grid;
     private List<GameObject> paths;
     private Camera cam;
@@ -31,6 +32,7 @@ public class CreateMap : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L)) SceneManager.LoadScene("Menu");
         if (newLevel.WorldSize == null) return;
         if (Input.GetMouseButtonDown(0))
         {
@@ -61,6 +63,8 @@ public class CreateMap : MonoBehaviour
                     {
                         newLevel.StartPoint = g.transform.position;
                         currentPos = newLevel.StartPoint;
+                        lineRenderer = Instantiate(lineRenderer);
+                        lineRenderer.SetPosition(0, currentPos);
                         isStartPoint = false;
                     }
                     else AddDirection(g);
@@ -68,8 +72,6 @@ public class CreateMap : MonoBehaviour
             }
         }
     }
-
-
 
     private void resetCurrentPos()
     {
@@ -84,19 +86,19 @@ public class CreateMap : MonoBehaviour
     {
         Vector3 dir3 = g.transform.position - currentPos;
         currentPos += dir3;
+        lineRenderer.positionCount++;
+        lineRenderer.SetPosition(lineRenderer.positionCount - 1, currentPos);
         Vector2 dir = new Vector2(dir3.x, dir3.z);
         newLevel.Path.Add(dir);
     }
-    public void PlayLevel()
+    public void SetName()
     {
-        MenuData.Level = newLevel;
-        MenuData.Level.Path = newLevel.Path;
-        SceneManager.LoadScene("SampleScene");
+        if (String.IsNullOrEmpty(inputFieldName.text)) return;
+        newLevel.Name = inputFieldName.text;
     }
     public void SaveLevel()
     {
         if (String.IsNullOrEmpty(inputFieldName.text)) return;
-        newLevel.Name = inputFieldName.text;
         SaveLoad.SaveToFile(newLevel);
         SceneManager.LoadScene("Menu");
 

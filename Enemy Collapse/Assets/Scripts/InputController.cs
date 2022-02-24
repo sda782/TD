@@ -29,9 +29,8 @@ public class InputController : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) StartPlacement?.Invoke();
         if (Input.GetMouseButtonUp(1)) rightClickHandler();
         if (Input.GetKeyDown(KeyCode.B)) StartGame?.Invoke();
-        if (Input.GetKeyDown(KeyCode.X)) menu.SetActive(!menu.activeSelf); ;
         if (Input.GetKeyDown(KeyCode.L)) SceneManager.LoadScene("Menu");
-        if (Input.GetKeyDown(KeyCode.N)) SwitchBuilding.Invoke();
+        if (Input.GetKeyDown(KeyCode.Q)) SwitchBuilding.Invoke();
     }
 
 
