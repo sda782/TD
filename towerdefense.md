@@ -35,6 +35,7 @@
 -   Create ammo system for shooting
 -   Display health over enemies
 -   Display health over turrets
+-   Translucent preview placement
 +   Stop preview when hovering over objects
 +   Display Tower health
 +   Show currently selected turret for placement
