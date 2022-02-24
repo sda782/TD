@@ -6,6 +6,8 @@ public class BuildingController : MonoBehaviour
     [SerializeField]
     private GameObject[] turrets;
     [SerializeField]
+    private Tower tower;
+    [SerializeField]
     private GameObject[] turrets_models;
     private int currentSelected;
     private Camera cam;
@@ -15,11 +17,18 @@ public class BuildingController : MonoBehaviour
     private Image image;
     [SerializeField]
     private Sprite[] sprites;
+    [SerializeField]
+    private TurretSO[] turretSOs;
     void Awake()
     {
         preview = false;
         cam = Camera.main;
         currentSelected = 0;
+    }
+    void Start()
+    {
+        tower = GameObject.Find("tower Variant(Clone)").GetComponent<Tower>();
+        //turretSOs = (TurretSO[])Resources.LoadAll("Turrets", typeof(TurretSO));
     }
     void Update()
     {
@@ -31,8 +40,10 @@ public class BuildingController : MonoBehaviour
         if (previewObj == null) return;
         Quaternion r = previewObj.transform.rotation;
         StopPlacement();
+        if (!canBuy()) return;
         Vector3 gridPos = new Vector3(Mathf.Round(pos.x), 0, Mathf.Round(pos.z));
         Instantiate(turrets[currentSelected], gridPos, r);
+        Buy();
     }
     public void SwitchBuilding()
     {
@@ -71,5 +82,14 @@ public class BuildingController : MonoBehaviour
                 previewObj.transform.position = gridPos;
             }
         }
+    }
+    private bool canBuy()
+    {
+        return turretSOs[currentSelected].Cost <= tower.Coins;
+    }
+
+    private void Buy()
+    {
+        tower.RemoveCoins(turretSOs[currentSelected].Cost);
     }
 }

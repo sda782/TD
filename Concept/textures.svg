@@ -7,29 +7,29 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
-   version="1.1"
-   id="svg8"
+   sodipodi:docname="textures.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="textures.svg">
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 210 297"
+   height="297mm"
+   width="210mm">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     id="base"
-     pagecolor="#787878"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="995.82803"
-     inkscape:cy="778.0925"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     showgrid="false"
      inkscape:document-rotation="0"
-     showgrid="false" />
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="1073.057"
+     inkscape:cx="2357.5137"
+     inkscape:zoom="0.24748737"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#787878"
+     id="base" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -43,39 +43,50 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="Lag 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Lag 1">
     <rect
-       style="fill:#ffffff;fill-opacity:0.25172412;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect833"
-       width="600"
-       height="100"
-       x="23.252449"
-       y="75.102737"
+       inkscape:export-ydpi="24.983608"
+       inkscape:export-xdpi="24.983608"
        ry="50"
-       inkscape:export-xdpi="24.983608"
-       inkscape:export-ydpi="24.983608" />
-    <rect
-       style="fill:#ffffff;fill-opacity:0.251724;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect845"
+       y="75.102737"
+       x="23.252449"
+       height="100"
        width="600"
-       height="498"
-       x="-68.420998"
-       y="-1.0690781"
-       ry="20.312483"
-       inkscape:export-xdpi="24.983608"
-       inkscape:export-ydpi="24.983608" />
+       id="rect833"
+       style="fill:#ffffff;fill-opacity:0.25172412;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
-       inkscape:export-ydpi="2.9028571"
-       inkscape:export-xdpi="2.9028571"
-       inkscape:export-filename="C:\Users\Andreas\Documents\GitHub\TD\Enemy Collapse\Assets\Textures\AmmoFilled.png"
-       ry="150"
-       y="-146.4637"
-       x="-342.10498"
-       height="300"
-       width="300"
+       inkscape:export-ydpi="24.983608"
+       inkscape:export-xdpi="24.983608"
+       ry="20.312483"
+       y="-1.0690781"
+       x="-68.420998"
+       height="498"
+       width="600"
+       id="rect845"
+       style="fill:#ffffff;fill-opacity:0.251724;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:50;stroke-linecap:round;fill-opacity:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect832"
-       style="fill:#ffffff;stroke:#ffffff;stroke-width:50;stroke-linecap:round;fill-opacity:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" />
+       width="300"
+       height="300"
+       x="-342.10498"
+       y="-146.4637"
+       ry="150"
+       inkscape:export-filename="C:\Users\Andreas\Documents\GitHub\TD\Enemy Collapse\Assets\Textures\AmmoFilled.png"
+       inkscape:export-xdpi="2.9028571"
+       inkscape:export-ydpi="2.9028571" />
+    <rect
+       inkscape:export-ydpi="24.580645"
+       inkscape:export-xdpi="24.580645"
+       inkscape:export-filename="C:\Users\Andreas\Documents\GitHub\TD\Enemy Collapse\Assets\Textures\Info.png"
+       ry="58.264755"
+       y="241.61165"
+       x="586.92383"
+       height="100"
+       width="300"
+       id="rect834"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:0.25247526" />
   </g>
 </svg>

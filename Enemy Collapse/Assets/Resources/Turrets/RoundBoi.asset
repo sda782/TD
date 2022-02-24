@@ -16,3 +16,4 @@ MonoBehaviour:
   <Atk>k__BackingField: 5
   <AtkSpeed>k__BackingField: 1
   <TType>k__BackingField: round
+  <Cost>k__BackingField: 50

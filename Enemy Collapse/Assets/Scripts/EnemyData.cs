@@ -34,6 +34,8 @@ public class EnemyData : MonoBehaviour
 
     private void Kill()
     {
+        Loot loot = GameObject.Find("WorldController").GetComponent<Loot>();
+        loot.DropCoin(enemyType.DCoins);
         Destroy(transform.parent.gameObject);
     }
 }

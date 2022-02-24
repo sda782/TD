@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Tower : MonoBehaviour
 {
     private int health = 100;
+    private int coins = 300;
     private UIManager uIManager;
     void Start()
     {
@@ -17,4 +18,15 @@ public class Tower : MonoBehaviour
         uIManager.UpdateHealthUI(health);
         if (health <= 0) SceneManager.LoadScene("Menu");
     }
+    public void AddCoins(int amount)
+    {
+        coins += amount;
+        uIManager.UpdateCoins(coins);
+    }
+    public void RemoveCoins(int amount)
+    {
+        coins -= amount;
+        uIManager.UpdateCoins(coins);
+    }
+    public int Coins { get => coins; }
 }

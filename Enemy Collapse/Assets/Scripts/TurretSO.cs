@@ -12,4 +12,6 @@ public class TurretSO : ScriptableObject
     public float AtkSpeed { get; set; }
     [field: SerializeField]
     public string TType { get; set; }
+    [field: SerializeField]
+    public int Cost { get; set; }
 }

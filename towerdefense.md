@@ -34,6 +34,7 @@
     -   Distribution of enemies
 -   Create ammo system for shooting
 -   Display health over enemies
+-   Display health over turrets
 +   Stop preview when hovering over objects
 +   Display Tower health
 +   Show currently selected turret for placement

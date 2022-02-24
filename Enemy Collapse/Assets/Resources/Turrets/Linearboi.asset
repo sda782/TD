@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 20
   <Atk>k__BackingField: 10
-  <AtkSpeed>k__BackingField: 2
+  <AtkSpeed>k__BackingField: 1
   <TType>k__BackingField: linear
+  <Cost>k__BackingField: 100

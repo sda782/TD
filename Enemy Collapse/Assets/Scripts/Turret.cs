@@ -12,12 +12,14 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private TurretSO turretSO;
     private float coolDown;
+    private int cost;
     void Start()
     {
         targetList = new List<GameObject>();
         ps = GetComponentInChildren<ParticleSystem>();
         coolDown = 0;
         lives = turretSO.Health;
+        cost = turretSO.Cost;
     }
 
     void Update()
@@ -76,4 +78,6 @@ public class Turret : MonoBehaviour
 
         return nearestGameObject;
     }
+
+    public int Cost { get => cost; private set => cost = value; }
 }

@@ -12,4 +12,6 @@ public class EnemySO : ScriptableObject
     public int Attack { get; set; }
     [field: SerializeField]
     public string EType { get; set; }
+    [field: SerializeField]
+    public int DCoins { get; set; }
 }
